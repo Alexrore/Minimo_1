@@ -6,6 +6,8 @@ public class Prestamo {
     Date fechaPrestamo, fechaDevloucion;
     boolean enTramite;
 
+    public Prestamo() {}
+
     public  Prestamo(String id, String idLibro, String idLector, Date fechaPrestamo, Date fechaDevloucion) {
         this.id = id;
         this.idLibro = idLibro;

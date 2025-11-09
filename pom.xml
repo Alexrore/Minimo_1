@@ -54,10 +54,11 @@
             <version>4.9</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.swagger/swagger-jersey2-jaxrs -->
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-jersey2-jaxrs</artifactId>
-            <version>${swagger-jersey2-jaxrs.version}</version>
+            <version>1.6.16</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -67,6 +68,7 @@
 
 
     </dependencies>
+
 
     <build>
         <plugins>

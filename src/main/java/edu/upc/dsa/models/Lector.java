@@ -5,6 +5,8 @@ public class Lector {
     private String id, nombre, apellidos, dni, lugarNacimiento, direccion;
     private Date fecha;
 
+    public Lector() {}
+
     public Lector(String id, String nombre, String apellidos, String dni, String lugarNacimiento, String direccion, Date fecha) {
         this.id = id;
         this.nombre = nombre;

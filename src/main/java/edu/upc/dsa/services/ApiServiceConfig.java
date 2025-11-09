@@ -1,4 +1,4 @@
-package edu.upc.dsa;
+package edu.upc.dsa.services;
 
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
@@ -10,18 +10,18 @@ public class ApiServiceConfig extends ResourceConfig {
         // Paquete donde están los @Path
         packages("edu.upc.dsa.services");
 
-        // Swagger (recursos que exponen /swagger.json)
+        // Swagger
         register(ApiListingResource.class);
         register(SwaggerSerializers.class);
 
-        // BeanConfig (swagger-core 1.x)
+        // BeanConfig
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setTitle("Biblioteca Rural API");
         beanConfig.setDescription("Servicio REST del Mínimo 1");
         beanConfig.setVersion("1.0");
-        // Base path del API (ajústalo si en Main montas otro)
+        // Base path del API
         beanConfig.setSchemes(new String[]{"http"});
-        beanConfig.setBasePath("/api"); // <- importante
+        beanConfig.setBasePath("/api");
         beanConfig.setResourcePackage("edu.upc.dsa.services");
         beanConfig.setScan(true);
     }

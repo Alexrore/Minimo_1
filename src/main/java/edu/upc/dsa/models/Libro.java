@@ -5,6 +5,7 @@ public class Libro {
     private String id, ISBN, titulo, editorial, autor, tematica;
     private int añoPublicacion, edicion, cantidad;
 
+    public Libro() {}
     public Libro(String id, String ISBN, String titulo, String editorial, int añoPublicacion,int edicion, String autor, String tematica) {
         this.id = id;
         this.ISBN = ISBN;

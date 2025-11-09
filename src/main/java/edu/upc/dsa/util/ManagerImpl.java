@@ -7,11 +7,7 @@ import org.apache.log4j.Logger;
 
 import java.util.*;
 
-/**
- * Implementación de la fachada (Singleton) para la gestión de la biblioteca.
- * Requisitos tomados del enunciado Minim1 (apilado de libros en montones de 10,
- * catalogación LIFO por montones en orden FIFO, gestión de préstamos, trazas log4j, etc.).
- */
+
 public class ManagerImpl implements Manager {
 
     private static final Logger logger = Logger.getLogger(ManagerImpl.class);
@@ -24,19 +20,19 @@ public class ManagerImpl implements Manager {
     }
 
     // --- Estado ---
-    /** Montones de libros recibidos: FIFO de montones; dentro de cada montón, LIFO. */
+    //Montones de libros recibidos: FIFO de montones; dentro de cada montón, LIFO.
     private final List<Deque<Libro>> montones = new LinkedList<>();
 
-    /** Catálogo por ISBN con cantidad disponible. */
+    //Catálogo por ISBN con cantidad disponible.
     private final Map<String, Libro> catalogo = new HashMap<>();
 
-    /** Lectores por id. */
+    //Lectores por id.
     private final Map<String, Lector> lectores = new HashMap<>();
 
-    /** Préstamos por id. */
+    // Préstamos por id lector.
     private final Map<String, Prestamo> prestamosById = new HashMap<>();
 
-    /** Préstamos agrupados por lector. */
+    // Préstamos agrupados por lector.
     private final Map<String, List<Prestamo>> prestamosByLector = new HashMap<>();
 
     public ManagerImpl() { }
@@ -117,7 +113,7 @@ public class ManagerImpl implements Manager {
             logger.error("No hay libros pendientes de catalogar");
             throw new NoSuchElementException("No hay libros pendientes de catalogar");
         }
-        // Sacar del primer montón (FIFO de montones), LIFO dentro del montón
+
         Libro extraido = null;
         while (!montones.isEmpty() && extraido == null) {
             Deque<Libro> primero = primerMonton();
@@ -132,7 +128,7 @@ public class ManagerImpl implements Manager {
             logger.error("No hay libros pendientes de catalogar (montones vacíos)");
             throw new NoSuchElementException("No hay libros pendientes de catalogar");
         }
-        // Añadir al catálogo por ISBN (incrementando cantidad si ya existe)
+
         Libro cat = catalogo.get(extraido.getISBN());
         if (cat == null) {
             extraido.setCantidad(1);
@@ -157,8 +153,7 @@ public class ManagerImpl implements Manager {
             logger.error("Lector no existe: " + idLector);
             throw new NoSuchElementException("Lector no existe: " + idLector);
         }
-        // El enunciado dice "identificador del libro catalogado".
-        // En esta implementación usamos el ISBN como clave de catálogo.
+
         Libro cat = catalogo.get(idLibro);
         if (cat == null) {
             logger.error("Libro no catalogado (ISBN)=" + idLibro);
@@ -188,7 +183,6 @@ public class ManagerImpl implements Manager {
     }
 
     // --- Métodos de soporte útiles en tests (no forman parte estricta de la interfaz, pero ayudan) ---
-    /** Devuelve una vista inmutable de los ISBN catalogados. */
     public  List<Libro> getLibrosCatalogados() {
         logger.info("getLibrosCatalogados");
         List<Libro> res = new ArrayList<>(catalogo.values());
