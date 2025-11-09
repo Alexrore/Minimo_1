@@ -54,8 +54,14 @@ Si el lector o el llibre no existeixen s’indica un error.
 ● Consultar tots els préstecs que ha realitzat un lector. Se sap per
 endavant que l'identificador del lector existeix.
 
+#Versió 1
 Part 1:
 S'ha aconseguit fer funcionar correctament els tests.
 
 Part 2:
 S'ha arrivat a crear el swagger y es pot rebre informacio del client, pero hi complicacions per processar-la.
+
+#Versió 2
+
+Part2: 
+S'ha solucionat el problema del servidor i ya funciona perfectament.
